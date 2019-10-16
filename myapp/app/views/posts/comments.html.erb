@@ -1,0 +1,29 @@
+<div class="container">
+<h2>Comments</h2>
+
+  <% @post.comments.each do |comment| %>
+  <p>
+  <%= comment.commenter %><br>
+  <%= content_with_emoji(comment.comment) %>
+  <% if current_user.email == comment.commenter %>
+    <%= link_to 'Delete', "/comments/#{comment.id}",method: :delete, data: { confirm: 'Are you sure?' }%>
+  <% end %>
+  </p>
+<% end %>
+</div>
+
+<div class= "container" id = "comment">
+  <h2>Add a comment</h2>
+  <%= form_for([@post, @post.comments.build]) do |f|%>
+    <div class="form-group">
+      <p class="emoji-picker-container field">
+      <%= f.text_area :comment, placeholder: "Write here", :class => "form-control",data: { emojiable: true } %>
+      </p>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Comment", :class => "btn btn-success" %>
+      <%= link_to 'Back', posts_path,:class => "btn btn-warning" %>
+    </div>
+  <% end %>
+</div>
+ 

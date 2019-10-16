@@ -1,0 +1,21 @@
+<div class="container">
+<h1> Posts </h1>
+<table class="table table-boredered table-hover">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Images</th>
+    <th>Edit</th>
+  </tr>
+  <tr>
+    <td><%= @post.title %></td>
+    <td><%= @post.body %></td>
+    <td><%= image_tag @post.avatar_url,:class => "img-fluid img-thumbnail" %></td>
+    <td><%= link_to 'Edit', edit_post_path(@post), :class => "btn btn-sm btn-info"%>
+      <a class="btn btn-sm btn-success" href=<%= "comments/#{@post.id}" %> >Comment(<%= @post.comments.count%>)</a>
+    </td>
+  </tr>
+</table>
+</div>
+<br>
+

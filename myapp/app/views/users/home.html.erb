@@ -1,0 +1,12 @@
+  <% if !current_user %>
+    <%= link_to 'Sign up', new_user_registration_path,:class => "btn btn-primary" %>
+    <%= link_to 'Sign in', new_user_session_path,:class => "btn btn-success" %>
+  <% else %>
+    <div class="card" style="width:400px">
+      <div class="card-body">
+        <h4 class="card-title"><%= current_user.username %></h4>
+        <p class="card-text">About <%= current_user.username%></p>
+        <a class="btn btn-primary" href= <%= edit_user_registration_path %>><i class="fa fa-gear"></i>&nbsp;Edit Profile</a>
+      </div>
+    </div>
+  <% end %>
